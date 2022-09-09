@@ -1,11 +1,11 @@
 <?php
-if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" || $_SERVER['SERVER_PORT'] === "80") {
+/* if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" || $_SERVER['SERVER_PORT'] === "80") {
     $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     header('HTTP/1.1 301 Moved Permanently');
     header('Location: ' . $location);
 	echo $location;
     exit;
-}
+} */
 $FOLDER=(isset($_GET['rt']))?$_GET['rt']:'movie';
 $PATH=dirname(__FILE__)."/$FOLDER/";
 if(isset($_POST['rem'])){
