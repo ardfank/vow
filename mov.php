@@ -17,7 +17,7 @@ if (isset($_POST['url']) && isset($_POST['name'])){
 	$vurl=$_POST['url'];
 	$vname=$_POST['name'];
 	// shell_exec("/usr/bin/yt-dlp -o '/media/d/$FOLDER/$vname' '$vurl' | /bin/sed 's/#015/\n/g' | /usr/bin/logger -t MOV");
-	shell_exec("/usr/bin/python3.7 /usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
+	shell_exec("/usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
 	shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$PATH/$vname' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$PATH/$vname.gif'");
 	exit;
 }
