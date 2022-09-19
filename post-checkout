@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# default owner user
+OWNER="www-data:www-data"
+
+# web repository directory
+REPO_DIR="/mnt/log/game/mov"
+echo "---"
+echo "--- Resetting ownership to ${OWNER} on ${REPO_DIR}"
+cd $REPO_DIR || exit
+unset GIT_DIR
+git fetch origin master
+files="$(git diff-tree -r --name-only --no-commit-id HEAD@{1} HEAD)"
+#files=`git diff ..FETCH_HEAD --name-only --diff-filter=ACMRTUXB`
+git merge FETCH_HEAD
+for file in $files
+   do
+       sudo chown $OWNER $file
+   done
+exec git-update-server-info
