@@ -128,7 +128,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 	display: none;
 	object-fit: contain;
 	margin:0 auto;
-	background:rgba(131, 51, 4, 0.8) url("up.jpg") no-repeat center/70%;
+	background:rgba(131, 51, 4, 0.8);
 	top:100;
 	left:50;
 	position:fixed;
@@ -136,6 +136,21 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 	height: 20vw;
 	width: 50vw;
 	z-index:999;
+}
+.ptex {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
 }
 .random{
 	position: fixed;
@@ -186,6 +201,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 <a href='#' onclick='javascript:up(event);' title='Upload Video'  style='background:url(<?=$icon['up']?>)no-repeat center'></a>
 </div>
 <div id='up' contenteditable='true' ondrop='drop(event)' ondragover='allowDrop(event)' >
+<div class='ptex'>DRAG or PASTE YOUR PICTURE HERE</div>
 <div style="display:none;z-index:999999;width:100%;height:100%;background:#000 url('https://user-images.githubusercontent.com/13696193/54483119-cdc87600-4824-11e9-8c64-65211669755e.gif') no-repeat center;position:absolute;top:0;left:0;opacity:0.9" id='ads'></div>
 <form action='#' name='upload' method='post' enctype='multipart/form-data'>
 <label for="st" style="position:absolute;bottom:0;margin:5px;border:1px solid;background-image:linear-gradient(#222,#666,#222);padding: 5px;">Pilih File</label>
