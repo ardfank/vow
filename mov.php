@@ -237,8 +237,10 @@ function drop(e) {
 		var e=$('#wow').attr('index');
 		e=(e>=im.length||e=='')?0:e;
 		$('#light').fadeIn(200);
+		$('#light').css({'background':'linear-gradient(90deg,rgba(255,0,0,.3), rgba(0,0,0,1), rgba(0,0,255,.3)), url('+im[e]+'.gif) center','background-size':'contain'});
 		$('#wow').attr({'src':im[e],'index':e,'loop':false}).on('ended',function(){
 			e++;
+			$('#light').css({'background':'linear-gradient(90deg,rgba(255,0,0,.3), rgba(0,0,0,1), rgba(0,0,255,.3)), url('+im[e]+'.gif) center','background-size':'contain'});
 			e=(e>=im.length||e=='')?0:e;
 			$('#wow').attr({'src':im[e],'index':e});
 		});
@@ -265,7 +267,8 @@ function drop(e) {
 	}
 	function light(i){
 		$('#light').hide(000);
-		$('#light').fadeIn(200); 
+		$('#light').fadeIn(200);
+		$('#light').css({'background':'linear-gradient(90deg,rgba(255,0,0,.3), rgba(0,0,0,1), rgba(0,0,255,.3)), url('+im[i]+'.gif) center','background-size':'contain'});
 		$('#wow').attr({'src':im[i],'index':i,'loop':true});
 		$('#wow').css('transform','translate(0px) scale(1)');
 	 }
