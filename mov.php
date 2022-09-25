@@ -202,7 +202,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 </div>
 <div id='up' contenteditable='true' ondrop='drop(event)' ondragover='allowDrop(event)' >
 <div class='ptex'>DRAG or PASTE YOUR PICTURE HERE</div>
-<div style="display:none;z-index:999999;width:100%;height:100%;background:#000 url('https://user-images.githubusercontent.com/13696193/54483119-cdc87600-4824-11e9-8c64-65211669755e.gif') no-repeat center;position:absolute;top:0;left:0;opacity:0.9" id='ads'></div>
+<div style="display:none;z-index:999999;width:100%;height:100%;background:#000 url('loading.gif') no-repeat center;position:absolute;top:0;left:0;opacity:0.9" id='ads'></div>
 <form action='#' name='upload' method='post' enctype='multipart/form-data'>
 <label for="st" style="position:absolute;bottom:0;margin:5px;border:1px solid;background-image:linear-gradient(#222,#666,#222);padding: 5px;">Pilih File</label>
 <input type="file" name="st" id="st" accept="video/mp4" style="display:none"/><input type="text" name="stn" id="stn" placeholder="Nama file"/>
