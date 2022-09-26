@@ -232,6 +232,59 @@ $.fn.isInViewport = function() {
 
     return elementBottom > viewportTop && elementTop < viewportBottom;
 };
+
+//SWIPE EVENT START
+	document.getElementById("wow").addEventListener('touchstart', handleTouchStart, false);        
+	document.getElementById("wow").addEventListener('touchmove', handleTouchMove, false);
+	var xDown = null;                                                        
+	var yDown = null;
+
+	function getTouches(evt) {
+	  return evt.touches ||             // browser API
+			 evt.originalEvent.touches; // jQuery
+	}                                                     
+																			 
+	function handleTouchStart(evt) {
+		const firstTouch = getTouches(evt)[0];                                      
+		xDown = firstTouch.clientX;                                      
+		yDown = firstTouch.clientY;                                      
+	};                                                
+																			 
+	function handleTouchMove(evt) {
+		if ( ! xDown || ! yDown ) {
+			return;
+		}
+
+		var xUp = evt.touches[0].clientX;                                    
+		var yUp = evt.touches[0].clientY;
+
+		var xDiff = xDown - xUp;
+		var yDiff = yDown - yUp;
+																			 
+		if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+			if ( xDiff > 0 ) {
+				/* right swipe */ 
+				next(event);
+			} else {
+				/* left swipe */
+				prev(event);
+			}                       
+		} else {
+			if ( yDiff > 0 ) {
+				/* up swipe */
+				next(event);
+				event.stopPropagation();ss();
+			} else { 
+				/* down swipe */
+				prev(event);
+			}                                                                 
+		}
+		/* reset values */
+		xDown = null;
+		yDown = null;                                             
+	};
+//
+
 function allowDrop(ev) {
   ev.preventDefault();
 }
@@ -461,6 +514,8 @@ $(window).on('resize scroll load', function() {
 		$('#light').fadeOut(500);
 		$('#up').fadeOut(500);
 		$('video').trigger('pause');
+		document.removeEventListener('touchstart', handleTouchStart);        
+		document.removeEventListener('touchmove', handleTouchMove);
 	});
 });
 </script>
