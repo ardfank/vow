@@ -295,9 +295,10 @@ function drop(e) {
 	var items = e.dataTransfer.items;
 	for( var i = 0, len = items.length; i < len; ++i ) {
 		var item = items[i];
-		if( item.type.indexOf('image') === 0 ) {
-			submitFileForm(item.getAsFile(), "paste");
-			// console.log(item.getAsFile());
+		// console.log(item);
+		if( item.type.indexOf('video') === 0 ) {
+			var stn=($('#stn').val()!='')?$('#stn').val():new Date().getTime();
+			submitFileForm(item.getAsFile(),stn);
 			return;
 		}
 	}
@@ -438,7 +439,7 @@ function drop(e) {
 			if (xhr.status == 200) {
 				im.push("<?=$FOLDER?>\/"+dt);
 				$('#gal').prepend("<div class='responsive' alt='"+dt+"' title='"+dt+"'><div style='left:10px;position: absolute;top: 5px;z-index:888;'>"+dt+"</div><video poster='<?=$FOLDER?>/"+dt+".gif' class='wow' width='100%' src='<?=$FOLDER?>/"+dt+"' index='"+(im.length-1)+"' onclick='javascript:light("+(im.length-1)+");'></video></div>");
-				$('#up,#ads').toggle(200);
+				$('#up,#ads').toggle(200);$('#stn').val('');
 			}
 		};
 		xhr.send(formData);
@@ -466,11 +467,11 @@ $(window).on('resize scroll load', function() {
 			e.preventDefault();
 			e.stopPropagation();
 			var items = e.clipboardData.items;
-			// var files = [];
 			for( var i = 0, len = items.length; i < len; ++i ) {
 				var item = items[i];
 				if( item.kind === "file" ) {
-					submitFileForm(item.getAsFile(), "paste");
+					var stn=($('#stn').val()!='')?$('#stn').val():new Date().getTime();
+					submitFileForm(item.getAsFile(),stn);
 					return;
 				}
 				if( item.kind === "string" && item.type==="text/plain") {
