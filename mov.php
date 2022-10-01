@@ -177,12 +177,20 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 	width: 47vw;
 	height: 47vw;	
   }
+  #up{
+	height: 40vh;
+	width: 90vw;
+  }
 }
 
 @media only screen and (max-width: 700px) {
   .responsive {
 	width: 94vw;
 	height: 94vw;	
+  }
+  #up{
+	height: 40vh;
+	width: 90vw;
   }
 }
 
@@ -273,7 +281,6 @@ $.fn.isInViewport = function() {
 			if ( yDiff > 0 ) {
 				/* up swipe */
 				next(event);
-				event.stopPropagation();ss();
 			} else { 
 				/* down swipe */
 				prev(event);
@@ -347,7 +354,7 @@ function drop(e) {
 		var l=parseInt($('#wow').attr('index'))+1;
 		l=(l>=im.length)?0:l;
 		$('#light').show(500);
-		light(l);
+		light(l);ss();
 	}
 	function prev(e){
 		e.stopPropagation();
