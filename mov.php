@@ -302,7 +302,6 @@ function drop(e) {
 	var items = e.dataTransfer.items;
 	for( var i = 0, len = items.length; i < len; ++i ) {
 		var item = items[i];
-		// console.log(item);
 		if( item.type.indexOf('video') === 0 ) {
 			var stn=($('#stn').val()!='')?$('#stn').val():new Date().getTime();
 			submitFileForm(item.getAsFile(),stn);
