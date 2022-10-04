@@ -484,10 +484,11 @@ $(window).on('resize scroll load', function() {
 				}
 				if( item.kind === "string" && item.type==="text/plain") {
 					var imgs = e.clipboardData.getData('Text');
-					var dt=($('#stn').val()!='')?$('#stn').val()+'.mp4':new Date().getTime()+'.mp4';
+					var dtx=($('#stn').val()!='')?$('#stn').val():new Date().getTime();
+					var dt=dtx+'.mp4';
 					$.post(window.location, {url: imgs,name: dt}, function() {
 						im.push("<?=$FOLDER?>\/"+dt);
-						$('#gal').prepend("<div class='responsive' alt='"+dt+"' title='"+dt+"'><div style='left:10px;position: absolute;top: 5px;z-index:888;'>"+dt+"</div><video poster='<?=$FOLDER?>/"+dt+".gif' class='wow' width='100%' loading='lazy' src='<?=$FOLDER?>/"+dt+"' index='"+(im.length-1)+"' onclick='javascript:light("+(im.length-1)+");'></video></div>");
+						$('#gal').prepend("<div class='responsive' alt='"+dt+"' title='"+dt+"'><div style='left:10px;position: absolute;top: 5px;z-index:888;'>"+dtx+"</div><video poster='<?=$FOLDER?>/"+dt+".gif' class='wow' width='100%' loading='lazy' src='<?=$FOLDER?>/"+dt+"' index='"+(im.length-1)+"' onclick='javascript:light("+(im.length-1)+");'></video></div>");
 						$('#up,#ads').toggle(200);
 					});
 				}
