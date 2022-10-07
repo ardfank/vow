@@ -121,7 +121,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 }
 #light>video{
 	height: 100%;
-	width: 99%;
+	// width: 99%;
 	object-fit: contain;
 }
 #up{
@@ -376,6 +376,13 @@ function drop(e) {
 		e.preventDefault();
 		$('#up').toggle(200);
 	}
+	function tut(){
+		$('#light').fadeOut(500);
+		$('#up').fadeOut(500);
+		$('video').trigger('pause');
+		document.removeEventListener('touchstart', handleTouchStart);        
+		document.removeEventListener('touchmove', handleTouchMove);
+	}
 
 	function ScrollZoom(container,max_scale,factor){
 		var target = container.children().first()
@@ -520,13 +527,8 @@ $(window).on('resize scroll load', function() {
 		var link = $(this).attr('index');
 		light(link);
 	});
-	$('#close').click(function(){
-		$('#light').fadeOut(500);
-		$('#up').fadeOut(500);
-		$('video').trigger('pause');
-		document.removeEventListener('touchstart', handleTouchStart);        
-		document.removeEventListener('touchmove', handleTouchMove);
-	});
+	$('#close').click(tut);
+	$('#light').not('#nav').click(tut);
 });
 </script>
 </body>
