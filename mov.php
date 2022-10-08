@@ -90,13 +90,13 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 	top:0;
 	width:10%;
 	cursor: pointer;
-	height:90%;
+	height:100%;
 }
 #next{
 	right:0;
 }
 #prev>img,#next>img{
-	opacity:0.1;
+	opacity:0.4;
 	object-fit: contain;
     width: 40%;
     height: 100%;
@@ -121,7 +121,6 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 }
 #light>video{
 	height: 100%;
-	// width: 99%;
 	object-fit: contain;
 }
 #up{
@@ -528,7 +527,11 @@ $(window).on('resize scroll load', function() {
 		light(link);
 	});
 	$('#close').click(tut);
-	$('#light').not('#nav').click(tut);
+	$('#light').on('click', function(e) {
+	  if (e.target !== this)
+		return;
+		tut();
+	});
 });
 </script>
 </body>
