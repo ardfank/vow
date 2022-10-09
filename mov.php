@@ -96,7 +96,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 	right:0;
 }
 #prev>img,#next>img{
-	opacity:0.4;
+	opacity:0.1;
 	object-fit: contain;
     width: 40%;
     height: 100%;
