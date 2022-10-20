@@ -121,6 +121,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 }
 #light>video{
 	height: 100%;
+	width: 99%;
 	object-fit: contain;
 }
 #up{
