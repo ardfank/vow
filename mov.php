@@ -7,7 +7,7 @@
     exit;
 } */
 $FOLDER=(isset($_GET['rt']))?$_GET['rt']:'movie';
-$PATH=dirname(__FILE__)."/$FOLDER/";
+$PATH=dirname(__FILE__)."/$FOLDER";
 if(isset($_POST['rem'])){
 	unlink($_POST['rem']);
 	unlink($_POST['rem'].".gif");
@@ -16,15 +16,20 @@ if(isset($_POST['rem'])){
 if (isset($_POST['url']) && isset($_POST['name'])){
 	$vurl=$_POST['url'];
 	$vname=$_POST['name'];
-	// shell_exec("/usr/bin/yt-dlp -o '/media/d/$FOLDER/$vname' '$vurl' | /bin/sed 's/#015/\n/g' | /usr/bin/logger -t MOV");
 	shell_exec("/usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
-	shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$PATH/$vname' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$PATH/$vname.gif'");
+	// shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$PATH/$vname' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$PATH/$vname.gif'");
+	// shell_exec("/usr/bin/ffmpeg -y -i '$PATH/$vname' -vf 'scale=-2:760' -movflags faststart -preset veryfast -crf 24 -c:v libx264 -c:a copy '$PATH/$vname-hs.mp4'");
+	// shell_exec("/usr/bin/mv -f '$PATH/$vname-hs.mp4' '$PATH/$vname'");
+	shell_exec(dirname(__FILE__)."/sh/scale.sh '$PATH/$vname' | logger -t MOV");
 	exit;
 }
 if( isset($_FILES['file'] ) ) {
-	$st = $PATH.$_FILES['file']['name'];
+	$st = $PATH."/".$_FILES['file']['name'];
 	if (move_uploaded_file($_FILES['file']['tmp_name'], $st)) {
-		shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$st' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$st.gif'");
+		// shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$st' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$st.gif'");
+		// shell_exec("/usr/bin/ffmpeg -y -i '$st' -vf 'scale=-2:760' -movflags faststart -preset veryfast -crf 24 -c:v libx264 -c:a copy '$st-hs.mp4'");
+		// shell_exec("/usr/bin/mv -f '$st-hs.mp4' '$st'");
+		shell_exec(dirname(__FILE__)."/sh/scale.sh '$st' | logger -t MOV");
 	}
 }
 
@@ -52,7 +57,7 @@ $icon["crop"]="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WoW</title>
 <style>
-body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f80 90%,#fff 92%,#000 95%);height:100%;color:#fda;font: medium calibri;}
+body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f80 90%,#fff 92%,#000 95%);background-attachment:fixed;height:900px;color:#fda;font: medium calibri;}
 * {
   box-sizing: border-box;
 }
