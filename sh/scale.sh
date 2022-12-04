@@ -7,6 +7,7 @@ if (($h > 760)); then
 	echo "$h Lebih. Memproses $1"
 	/usr/bin/ffmpeg -y -i "$1" -vf "scale=-2:760" -movflags faststart -preset veryfast -crf 24 -c:v libx264 -an "$1-hs.mp4"
 	/usr/bin/mv -f "$1-hs.mp4" "$1"
+	echo "Done - selesai - OK"
 else
 	echo "$h, $1 tidak diproses"
 fi
