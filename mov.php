@@ -16,8 +16,8 @@ if(isset($_POST['rem'])){
 if (isset($_POST['url']) && isset($_POST['name'])){
 	$vurl=$_POST['url'];
 	$vname=$_POST['name'];
-	if(strpos("tiktok.com",$vurl)){
-		shell_exec("/usr/bin/yt-dlp  -S '+size,+br'-o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");		
+	if(strpos($vurl,"tiktok.com")!==false){
+		shell_exec("/usr/bin/yt-dlp -S '+size,+br' -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");		
 	}else{
 		shell_exec("/usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
 	}
