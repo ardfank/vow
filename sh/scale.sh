@@ -6,7 +6,7 @@ h=$(/usr/bin/ffprobe -v error -select_streams v:0 -show_entries stream=height -o
 if (($h > 760)); then
 	echo "Height is $h"
 	echo "Scaling...."
-	/usr/bin/ffmpeg -y -i "$1" -vf "scale=-2:760" -movflags faststart -preset veryfast -crf 24 -c:v libx264 -an "$1-hs.mp4" && /usr/bin/mv -f "$1-hs.mp4" "$1" && echo "Done - selesai - OK"
+	/usr/bin/ffmpeg -y -i "$1" -vf "scale=-2:760" -movflags faststart -preset veryfast -crf 24 -c:v libx264 -c:a copy "$1-hs.mp4" && /usr/bin/mv -f "$1-hs.mp4" "$1" && echo "Done - selesai - OK"
 else
 	echo "Height is $h"
 	echo "No scaling - Done - selesai - OK"

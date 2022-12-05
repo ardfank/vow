@@ -16,7 +16,11 @@ if(isset($_POST['rem'])){
 if (isset($_POST['url']) && isset($_POST['name'])){
 	$vurl=$_POST['url'];
 	$vname=$_POST['name'];
-	shell_exec("/usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
+	if(strpos("tiktok.com",$vurl)){
+		shell_exec("/usr/bin/yt-dlp  -S '+size,+br'-o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");		
+	}else{
+		shell_exec("/usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
+	}
 	shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$PATH/$vname' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$PATH/$vname.gif'");
 	// shell_exec("/usr/bin/ffmpeg -y -i '$PATH/$vname' -vf 'scale=-2:760' -movflags faststart -preset veryfast -crf 24 -c:v libx264 -c:a copy '$PATH/$vname-hs.mp4'");
 	// shell_exec("/usr/bin/mv -f '$PATH/$vname-hs.mp4' '$PATH/$vname'");
