@@ -1,6 +1,6 @@
 <?php
 /* if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" || $_SERVER['SERVER_PORT'] === "80") {
-    $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+/    $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     header('HTTP/1.1 301 Moved Permanently');
     header('Location: ' . $location);
 	echo $location;
