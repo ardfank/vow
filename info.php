@@ -1,3 +1,50 @@
 <?php
-phpinfo();
+function hf($bytes, $decimals = 2) {
+    $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+    $factor = floor((strlen($bytes) - 1) / 3);
+    return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+}
+if (isset($_GET['url'])){
+	$vurl=$_GET['url'];
+	$res = shell_exec("/usr/bin/yt-dlp -j -S '+size,+br' '$vurl'");
+	$re = json_decode($res);
+	if (isset($re->formats)){
+		$is = $re->url;
+		$si='';
+		foreach($re->formats as $fo){
+			$nm=(isset($fo->format_note))?$fo->format_note:$fo->format;
+			$ur=$fo->url;
+			$si.="<li><a download href='$ur'>$nm (".hf($fo->filesize)." ; ".$fo->resolution.")</a></li>";
+		}
+		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left'><video style='width:20vw' src='$is' loop muted controls></video></div><div style='width:60vw;float:right'><lo>$si</lo></div></div>";
+	}else{$isi = "Salah format";}
+}
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WoW</title>
+<style>
+body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f80 90%,#fff 92%,#000 95%);background-attachment:fixed;height:900px;color:#fda;font: medium calibri;}
+* {
+  box-sizing: border-box;
+}
+</style>
+<script type='text/javascript' src='jquery.min.js'></script>
+</head>
+<body>
+<form action='#' name='upload' method='post' enctype='multipart/form-data'>
+<input type="text" name="stn" id="stn" placeholder="Nama file"/>
+</form>
+<?=$isi?>
+<script>
+$(document).ready(function(){
+	 $('#stn').change(function(){
+		var imgs=$(this).val();
+		window.location.href = '/info.php?url='+imgs;
+	});
+});
+</script>
+</body>
+</html> 
