@@ -515,7 +515,7 @@ function drop(e) {
 					var dt=dtx+'.mp4';
 					$.post(window.location, {url: imgs,name: dt}, function() {
 						im.push("<?=$FOLDER?>\/"+dt);
-						$('#gal').prepend("<div class='responsive' alt='"+dt+"' title='"+dt+"'><div style='left:10px;position: absolute;top: 5px;z-index:888;'>"+dtx+"</div><video poster='<?=$FOLDER?>/"+dt+".gif' class='wow' width='100%' loading='lazy' src='<?=$FOLDER?>/"+dt+"' index='"+(im.length-1)+"' onclick='javascript:light("+(im.length-1)+");'></video></div>");
+						$('#gal').prepend("<div class='responsive' style='display:block' alt='"+dt+"' title='"+dt+"'><div style='left:10px;position: absolute;top: 5px;z-index:888;'>"+dtx+"</div><video poster='<?=$FOLDER?>/"+dt+".gif' class='wow' width='100%' loading='lazy' src='<?=$FOLDER?>/"+dt+"' index='"+(im.length-1)+"' onclick='javascript:light("+(im.length-1)+");'></video></div>");
 						$('#up,#ads').toggle(200);
 					});
 				}
