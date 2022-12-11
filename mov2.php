@@ -469,8 +469,8 @@ function drop(e) {
 	}	
  $(document).ready(function(){
 	 $('.responsive').each(function(i,tem){
-		if(i<17){
-			$(this).fadeIn();
+		if(i<16){
+			$(this).fadeIn(1000);
 			var poster=$('.wow',this).attr('src')+'.gif';
 			if ($('.wow',this).attr('poster')!=poster) {
 				$('.wow',this).attr('poster',poster);
@@ -481,7 +481,7 @@ function drop(e) {
 		$('.responsive').each(function(){
 			var ene=$(this);
 			los($('footer'),function(){			
-				ene.fadeIn(2500);
+				ene.fadeIn(1000);
 				var poster=$('.wow',ene).attr('src')+'.gif';
 				if ($('.wow',ene).attr('poster')!=poster) {
 					$('.wow',ene).attr('poster',poster);
@@ -556,7 +556,6 @@ function drop(e) {
 });
 </script>
 <div class='clearfix'></div>
-<hr/>
 <footer style='text-align:center'>--ooOOoo--</footer>
 </body>
 </html> 
