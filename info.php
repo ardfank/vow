@@ -16,7 +16,7 @@ if (isset($_GET['url'])){
 			$ur=$fo->url;
 			$si.="<li><a download href='$ur'>$nm (".hf($fo->filesize)." ; ".$fo->resolution.")</a></li>";
 		}
-		$isi = "<div style='width:100%;position: absolute'><div style='position: relative;float:left'><video style='height:90vw' src='$is' loop muted controls></video></div><div style='left:10px;position:relative'><lo>$si</lo></div></div>";
+		$isi = "<div style='width:100%;position: absolute'><div style='position: relative;float:left'><video style='height:85vh' src='$is' loop muted controls></video></div><div style='left:10px;position:relative'><lo>$si</lo></div></div>";
 	}else{$isi = "Salah format";}
 }
 ?>
