@@ -16,7 +16,7 @@ if (isset($_GET['url'])){
 			$ur=$fo->url;
 			$si.="<li><a download href='$ur'>$nm (".hf($fo->filesize)." ; ".$fo->resolution.")</a></li>";
 		}
-		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left'><video style='width:20vw' src='$is' loop muted controls></video></div><div style='width:60vw;float:right'><lo>$si</lo></div></div>";
+		$isi = "<div style='width:100%;position: absolute'><div style='position: relative;float:left'><video style='height:90vw' src='$is' loop muted controls></video></div><div style='left:10px;position:relative'><lo>$si</lo></div></div>";
 	}else{$isi = "Salah format";}
 }
 ?>
@@ -34,9 +34,7 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 <script type='text/javascript' src='jquery.min.js'></script>
 </head>
 <body>
-<form action='#' name='upload' method='post' enctype='multipart/form-data'>
-<input type="text" name="stn" id="stn" placeholder="Nama file"/>
-</form>
+<input type="text" name="stn" id="stn" placeholder="Ganti URL"/>
 <?=$isi?>
 <script>
 $(document).ready(function(){

@@ -481,7 +481,7 @@ function drop(e) {
 		$('.responsive').each(function(){
 			var ene=$(this);
 			los($('footer'),function(){			
-				ene.fadeIn(2500);
+				ene.fadeIn(1000);
 				var poster=$('.wow',ene).attr('src')+'.gif';
 				if ($('.wow',ene).attr('poster')!=poster) {
 					$('.wow',ene).attr('poster',poster);
