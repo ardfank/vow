@@ -27,9 +27,7 @@ if (isset($_GET['url'])){
 <title>WoW</title>
 <style>
 body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f80 90%,#fff 92%,#000 95%);background-attachment:fixed;height:900px;color:#fda;font: medium calibri;}
-* {
-  box-sizing: border-box;
-}
+a{color:#fda;text-decoration: none;}
 </style>
 <script type='text/javascript' src='jquery.min.js'></script>
 </head>
