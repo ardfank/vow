@@ -8,7 +8,7 @@ if (isset($_GET['url'])){
 	$vurl=$_GET['url'];
 	$res = shell_exec("/usr/bin/yt-dlp -j -S '+size,+br' '$vurl'");
 	$re = json_decode($res);
-	$wr = $re->->webpage_url;
+	$wr = $re->webpage_url;
 	if (isset($re->formats)){
 		$cf=count($re->formats)-1;
 		$is = (isset($re->url))?$re->url:$re->formats[$cf]->url;
