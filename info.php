@@ -9,14 +9,15 @@ if (isset($_GET['url'])){
 	$res = shell_exec("/usr/bin/yt-dlp -j -S '+size,+br' '$vurl'");
 	$re = json_decode($res);
 	if (isset($re->formats)){
-		$is = $re->url;
+		$cf=count($re->formats)-1;
+		$is = (isset($re->url))?$re->url:$re->formats[$cf]->url;
 		$si='';
 		foreach($re->formats as $fo){
 			$nm=(isset($fo->format_note))?$fo->format_note:$fo->format;
 			$ur=$fo->url;
 			$si.="<li><a download href='$ur'>$nm (".hf($fo->filesize)." ; ".$fo->resolution.")</a></li>";
 		}
-		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left'><video style='height:85vh' src='$is' loop muted controls></video></div><div style='left:10px;position:relative'><lo>$si</lo></div></div>";
+		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left;width:65%'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative'><lo>$si</lo></div></div>";
 	}else{$isi = "Salah format";}
 }
 ?>
