@@ -15,10 +15,11 @@ if (isset($_GET['url'])){
 		$si='';
 		foreach($re->formats as $fo){
 			$nm=(isset($fo->format_note))?$fo->format_note:$fo->format;
+			$fs=(isset($fo->filesize))?(int)$fo->filesize:$fo->filesize_approx;
 			$ur=$fo->url;
-			$si.="<li><a download href='$ur'>$nm (".hf($fo->filesize)." ; ".$fo->resolution.")</a></li>";
+			$si.="<li><a href='$ur' download>$nm (".hf($fs)." ; ".$fo->resolution.")</a></li>";
 		}
-		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left;max-width:65%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;display:flex;flex-wrap:wrap;'><a href='$wr'>$wr</a><ol>$si</ol></div></div>";
+		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left;max-width:65%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;display:flex;flex-wrap:wrap;float:left;width:30%'><a href='$wr'>$wr</a><ol>$si</ol></div></div>";
 	}else{$isi = "Salah format";}
 }
 ?>
