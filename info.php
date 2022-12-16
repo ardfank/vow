@@ -19,8 +19,8 @@ if (isset($_GET['url'])){
 			$ur=$fo->url;
 			$si.="<li><a href='$ur' download>$nm (".hf($fs)." ; ".$fo->resolution.")</a></li>";
 		}
-		$isi = "<div style='width:90%;position: absolute'><div style='position: relative;float:left;max-width:65%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;display:flex;flex-wrap:wrap;float:left;width:30%'><a href='$wr'>$wr</a><ol>$si</ol></div></div>";
-	}else{$isi = "Salah format";}
+		$isi = "<div style='width:99%;position: absolute'><div style='position: relative;float:left;width:60%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;float:left;width:30%'><a href='$wr'>$wr</a><ol>$si</ol></div></div>";
+	}else{$isi = "Video tidak ditemukan, not found, 404, dll, etc";}
 }
 ?>
 <!DOCTYPE html>
@@ -31,6 +31,11 @@ if (isset($_GET['url'])){
 <style>
 body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f80 90%,#fff 92%,#000 95%);background-attachment:fixed;height:900px;color:#fda;font: medium calibri;}
 a{color:#fda;text-decoration: none;}
+video{
+	height: 100%;
+	width: 99%;
+	object-fit: contain;
+}
 </style>
 <script type='text/javascript' src='jquery.min.js'></script>
 </head>
