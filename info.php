@@ -6,6 +6,7 @@ function hf($bytes, $decimals = 2) {
 }
 if (isset($_GET['url'])){
 	$vurl=$_GET['url'];
+	$agent = (isset($_SERVER['HTTP_USER_AGENT']))?$_SERVER['HTTP_USER_AGENT']:"";
 	if (strlen(strstr($agent, 'Firefox')) > 0 && strpos($vurl,"tiktok.com")!==false) {
 		$res = shell_exec("/usr/bin/yt-dlp -j '$vurl'");
 	}else{
