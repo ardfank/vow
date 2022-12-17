@@ -58,7 +58,7 @@ $icon["crop"]="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WoW</title>
+<title>WoW (<?=count($fli)?> videos...)</title>
 <style>
 body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f80 90%,#fff 92%,#000 95%);background-attachment:fixed;height:900px;color:#fda;font: medium calibri;}
 * {
