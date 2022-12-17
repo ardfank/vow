@@ -6,7 +6,11 @@ function hf($bytes, $decimals = 2) {
 }
 if (isset($_GET['url'])){
 	$vurl=$_GET['url'];
-	$res = shell_exec("/usr/bin/yt-dlp -j -S '+size,+br' '$vurl'");
+	if (strlen(strstr($agent, 'Firefox')) > 0 && strpos($vurl,"tiktok.com")!==false) {
+		$res = shell_exec("/usr/bin/yt-dlp -j '$vurl'");
+	}else{
+		$res = shell_exec("/usr/bin/yt-dlp -j -S '+size,+br' '$vurl'");
+	}
 	$re = json_decode($res);
 	$wr = $re->webpage_url;
 	if (isset($re->formats)){
