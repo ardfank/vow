@@ -241,9 +241,9 @@ body{background-color:#000;background-image:linear-gradient(15deg, #000 81%, #f8
 <script>
 var im=<?php echo json_encode($fli);?>;
 //ON VIEWPORT
-function los(en,f){
+function los(en,os,f){
 	var ps = $(window).scrollTop() + $(window).height();
-		at = en.offset().top;av = $(window).scrollTop();		
+		at = (en.offset().top-os);av = $(window).scrollTop();		
 			if(at > av && at < ps){
 				f();
 			}
@@ -480,7 +480,7 @@ function drop(e) {
 	$(window).on('resize scroll', function() {
 		$('.responsive').each(function(){
 			var ene=$(this);
-			los($('footer'),function(){			
+			los($('footer'),150,function(){			
 				ene.fadeIn(1000);
 				var poster=$('.wow',ene).attr('src')+'.gif';
 				if ($('.wow',ene).attr('poster')!=poster) {
