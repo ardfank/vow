@@ -51,7 +51,7 @@ video{
 $(document).ready(function(){
 	 $('#stn').change(function(){
 		var imgs=$(this).val();
-		window.location.href = '/info.php?url='+imgs;
+		window.location.href = 'info.php?url='+imgs;
 	});
 });
 </script>
