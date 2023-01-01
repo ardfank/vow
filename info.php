@@ -25,7 +25,7 @@ if (isset($_GET['url'])){
 			$si.="<li><a href='$ur' download>$nm (".hf($fs)." ; ".$fo->resolution.")</a></li>";
 		}
 		$isi = "<div style='width:99%;position: absolute'><div style='position: relative;float:left;width:60%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;float:left;width:30%;word-wrap:break-word'><a href='$wr'>$wr</a><ol>$si</ol></div></div>";
-	}else{$isi = "Video tidak ditemukan, not found, 404, dll, etc";}
+	}else{$isi = "$wr<br/>$vurl<br/>Video tidak ditemukan, not found, 404, dll, etc";}
 }
 ?>
 <!DOCTYPE html>

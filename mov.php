@@ -21,17 +21,19 @@ if (isset($_POST['url']) && isset($_POST['name'])){
 	}else{
 		shell_exec("/usr/bin/yt-dlp -o '$PATH/$vname' '$vurl' | /usr/bin/logger -t MOV");
 	}
-	shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$PATH/$vname' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$PATH/$vname.gif'");
+	// shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$PATH/$vname' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$PATH/$vname.gif'");
 	// shell_exec("/usr/bin/ffmpeg -y -i '$PATH/$vname' -vf 'scale=-2:760' -movflags faststart -preset veryfast -crf 24 -c:v libx264 -c:a copy '$PATH/$vname-hs.mp4'");
 	// shell_exec("/usr/bin/mv -f '$PATH/$vname-hs.mp4' '$PATH/$vname'");
+	shell_exec(dirname(__FILE__)."/sh/thumb.sh '$PATH/$vname' | logger -t MOV");
 	shell_exec(dirname(__FILE__)."/sh/scale.sh '$PATH/$vname' | logger -t MOV > /dev/null 2>/dev/null &");
 }
 if( isset($_FILES['file'] ) ) {
 	$st = $PATH."/".$_FILES['file']['name'];
 	if (move_uploaded_file($_FILES['file']['tmp_name'], $st)) {
-		shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$st' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$st.gif'");
+		// shell_exec("/usr/bin/ffmpeg -ss 3 -t 6 -i '$st' -filter_complex '[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1' -loop 0 -f webp '$st.gif'");
 		// shell_exec("/usr/bin/ffmpeg -y -i '$st' -vf 'scale=-2:760' -movflags faststart -preset veryfast -crf 24 -c:v libx264 -c:a copy '$st-hs.mp4'");
 		// shell_exec("/usr/bin/mv -f '$st-hs.mp4' '$st'");
+		shell_exec(dirname(__FILE__)."/sh/thumb.sh '$st' | logger -t MOV");
 		shell_exec(dirname(__FILE__)."/sh/scale.sh '$st' | logger -t MOV > /dev/null 2>/dev/null &");
 	}
 }
