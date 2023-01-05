@@ -14,6 +14,6 @@ fi
 
 echo "Thumb: $dh secs from $dd"
 
-/usr/bin/ffmpeg -ss "$dd" -t "$dh" -i "$1" -filter_complex "[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1" -loop 0 -f webp "$1.gif"
+/usr/bin/ffmpeg -y -ss "$dd" -t "$dh" -i "$1" -filter_complex "[0:v] fps=9,scale=w=72:h=-2,split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1" -loop 0 -f webp "$1.gif"
 
 exit
