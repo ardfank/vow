@@ -16,7 +16,7 @@ if (isset($_GET['up'])){
 	}
 	shell_exec(dirname(__FILE__)."/sh/thumb.sh '$PATH/$vname' | logger -t MOV");
 	shell_exec(dirname(__FILE__)."/sh/scale.sh '$PATH/$vname' | logger -t MOV > /dev/null 2>/dev/null &");
-	header('Location: https://vow.sa.ya/');
+	header('Location: https://vow.sa.ya/?'.$vname);
 }
 if (isset($_GET['url'])){
 	$vurl=$_GET['url'];
