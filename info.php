@@ -38,7 +38,7 @@ if (isset($_GET['url'])){
 			$ur=$fo->url;
 			$si.="<li><a href='$ur' download>$nm (".hf($fs)." ; ".$fo->resolution.")</a></li>";
 		}
-		$isi = "<div style='width:99%;position: absolute'><div style='position: relative;float:left;width:60%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;float:left;width:30%;word-wrap:break-word'><a href='$wr'>$wr</a><ol>$si</ol></div></div><a href='https://vow.sa.ya/info.php?up=$wr'>UP</a>";
+		$isi = "<div style='width:99%;position: absolute'><div style='position: relative;float:left;width:60%;height:80vh'><video style='width:100%' src='$is' loop muted controls></video></div><div style='left:10px;position:relative;float:left;width:30%;word-wrap:break-word'><a href='$wr'>$wr</a><ol>$si</ol></div></div><a id='up' href='https://vow.sa.ya/info.php?up=$wr' style='display:none;position:fixed;bottom:10px;right:10px;'>💦</a>";
 	}else{$isi = "$wr<br/>$vurl<br/>Video tidak ditemukan, not found, 404, dll, etc";}
 }
 ?>
@@ -62,6 +62,11 @@ video{
 <input type="text" name="stn" id="stn" placeholder="Ganti URL"/>
 <?=$isi?>
 <script>
+$.get('https://vow.sa.ya/', function(data, statusText, xhr) {
+    if(xhr.status === 200){
+		$('#up').slideDown(5000);
+	}
+});
 $(document).ready(function(){
 	 $('#stn').change(function(){
 		var imgs=$(this).val();
